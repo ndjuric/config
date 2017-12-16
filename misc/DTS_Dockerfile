@@ -1,0 +1,30 @@
+# Official ubuntu as a parent image
+FROM ubuntu:16.04
+
+# Set the working directory to .
+WORKDIR .
+
+# Copy the current directory contents into the container
+ADD . .
+
+# Install any needed dependencies for the application
+RUN apt-get update
+RUN apt-get install -y wget xz-utils python-pip libmysqlclient-dev libcurl4-openssl-dev libssl-dev net-tools
+RUN mkdir /ffmpeg \
+    && cd /ffmpeg \
+    && wget https://johnvansickle.com/ffmpeg/releases/ffmpeg-release-64bit-static.tar.xz \
+    && tar xf ffmpeg-release-64bit-static.tar.xz \
+    && cd ./ffmpeg* \
+    && mv * ../ \
+    && ln -s /ffmpeg/ffmpeg /usr/bin/ffmpeg \
+    && ln -s /ffmpeg/ffprobe /usr/bin/ffprobe \
+    && ln -s /ffmpeg/ffserver /usr/bin/ffserver
+
+# Install any needed packages specified in requirements.txt
+RUN pip install -r requirements.txt
+
+# Define environment variable
+ENV TEST TESTVAL
+
+# run worker.py when the container launches
+CMD ["python", "worker.py", "&"]
