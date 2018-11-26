@@ -24,7 +24,6 @@ filetype plugin indent on
 set encoding=utf-8
 set guifont=DroidSansMono\ Nerd\ Font\ 11
 colorscheme gruvbox
-"let g:space_vim_dark_background = 234
 color gruvbox
 let g:airline_theme = 'gruvbox'
 
