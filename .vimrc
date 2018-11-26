@@ -4,7 +4,7 @@ filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
-Plugin 'arcticicestudio/nord-vim'
+Plugin 'morhetz/gruvbox'
 Plugin 'tpope/vim-fugitive'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'wincent/command-t'
@@ -12,17 +12,33 @@ Plugin 'editorconfig/editorconfig-vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'bling/vim-airline'
-Plugin 'kien/ctrlp.vim'
+Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'wincent/terminus'
 Plugin 'scrooloose/syntastic'
 Plugin 'Valloric/YouCompleteMe'
 call vundle#end()
 
+syntax on
+
 filetype plugin indent on
-let base16colorspace=256
 set encoding=utf-8
 set guifont=DroidSansMono\ Nerd\ Font\ 11
-colorscheme nord
+colorscheme gruvbox
+"let g:space_vim_dark_background = 234
+color gruvbox
+let g:airline_theme = 'gruvbox'
+
+" airline
+let g:airline#extensions#tabline#enabled = 1
+" Show just the filename
+let g:airline#extensions#tabline#fnamemod = ':t'
+
+let g:airline_powerline_fonts = 1
+
+if !exists('g:airline_symbols')
+  let g:airline_symbols = {}
+endif
+let g:airline_symbols.space = "\ua0"
 
 " Show what mode you're currently in
 set showmode
@@ -89,11 +105,6 @@ nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 
-" airline
-let g:airline#extensions#tabline#enabled = 1
-" Show just the filename
-let g:airline#extensions#tabline#fnamemod = ':t'
-
 " NERDTree
 let NERDTreeShowHidden = 1
 let NERDTreeMapOpenSplit = '<C-x>'
@@ -134,3 +145,7 @@ let g:ycm_key_list_select_completion = ['<TAB>', '<Down>', '<Enter>']
 if exists("g:loaded_webdevicons")
   call webdevicons#refresh()
 endif
+
+hi Normal     ctermbg=NONE guibg=NONE
+hi LineNr     ctermbg=NONE guibg=NONE
+hi SignColumn ctermbg=NONE guibg=NONE
