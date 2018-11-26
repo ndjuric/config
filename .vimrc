@@ -11,7 +11,8 @@ Plugin 'wincent/command-t'
 Plugin 'editorconfig/editorconfig-vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
-Plugin 'bling/vim-airline'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'wincent/terminus'
 Plugin 'scrooloose/syntastic'
@@ -25,13 +26,11 @@ set encoding=utf-8
 set guifont=DroidSansMono\ Nerd\ Font\ 11
 colorscheme gruvbox
 color gruvbox
-let g:airline_theme = 'gruvbox'
+let g:airline_theme = 'term'
 
 " airline
 let g:airline#extensions#tabline#enabled = 1
-" Show just the filename
 let g:airline#extensions#tabline#fnamemod = ':t'
-
 let g:airline_powerline_fonts = 1
 
 if !exists('g:airline_symbols')
@@ -41,30 +40,38 @@ let g:airline_symbols.space = "\ua0"
 
 " Show what mode you're currently in
 set showmode
+
 " Show what commands you're typing
 set showcmd
+
 " Allow modelines
-" http://vim.wikia.com/wiki/Modeline_magic
 set modeline
+
 " Show current line and column position in file
 set ruler
+
 " Show file title in terminal tab
 set title
+
 " Show line numbers
 set number
+
 " Always display the status line
-set laststatus=2
+set laststatus=2a
+
 " Highlight current line
-set cursorline
+"set cursorline
+
 " Highlight search results as we type
 set incsearch
+
 " ignore case when searching...
 set ignorecase
+
 " ...except if we input a capital letter
 set smartcase
 
 " hides buffer instead of closing them
-" http://usevim.com/2012/10/19/vim101-set-hidden/
 set hidden
 
 " Tab stuff
@@ -132,9 +139,6 @@ endif
 
 " Disable JSON quote concealing
 let g:vim_json_syntax_conceal = 0
-
-" ctrlp
-" show hidden files
 let g:ctrlp_show_hidden = 1
 
 " ycm
@@ -148,3 +152,4 @@ endif
 hi Normal     ctermbg=NONE guibg=NONE
 hi LineNr     ctermbg=NONE guibg=NONE
 hi SignColumn ctermbg=NONE guibg=NONE
+hi VertSplit  ctermbg=NONE guibg=NONE
