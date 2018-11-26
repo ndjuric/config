@@ -57,7 +57,7 @@ set title
 set number
 
 " Always display the status line
-set laststatus=2a
+set laststatus=2
 
 " Highlight current line
 "set cursorline
