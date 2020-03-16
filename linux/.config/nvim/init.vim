@@ -17,7 +17,7 @@ Plug 'junegunn/rainbow_parentheses.vim'
 Plug 'nightsense/forgotten'
 Plug 'zaki/zazen'
 
-" Aethetics - Additional
+" Aesthetics - Additional
 Plug 'nightsense/nemo'
 Plug 'yuttie/hydrangea-vim'
 Plug 'chriskempson/tomorrow-theme', { 'rtp': 'vim' }
@@ -75,6 +75,9 @@ set background=dark
 let g:gruvbox_material_background = 'soft'
 
 colorscheme gruvbox-material
+
+set splitbelow
+set splitright
 
 " Transparent Background (For i3 and compton)
 highlight Normal guibg=NONE ctermbg=NONE
@@ -189,27 +192,48 @@ inoremap <A-k> <Esc>:m .-2<CR>==gi
 vnoremap <A-j> :m '>+1<CR>gv=gv
 vnoremap <A-k> :m '<-2<CR>gv=gv
 
+" split navigation
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
 """ Custom Mappings
 
 let mapleader=","
+
+" reload neovim config
+nmap <leader>r :so ~/.config/nvim/init.vim<CR>
+
+" nerdtree
 nmap <leader>q :NERDTreeToggle<CR>
 nmap \ <leader>q
-nmap <leader>w :TagbarToggle<CR>
-nmap <leader>ee :Colors<CR>
-nmap <leader>ea :AirlineTheme 
-nmap <leader>r :so ~/.config/nvim/init.vim<CR>
+
+"nmap <leader>ee :Colors<CR>
+"nmap <leader>ea :AirlineTheme
 nmap <leader>t :call TrimWhitespace()<CR>
 xmap <leader>a gaip*
 nmap <leader>a gaip*
-nmap <leader>s <C-w>s<C-w>j:terminal<CR>
-nmap <leader>vs <C-w>v<C-w>l:terminal<CR>
+nmap <leader>th <C-w>s<C-w>j:terminal<CR>
+nmap <leader>tv <C-w>v<C-w>l:terminal<CR>
+nmap <leader>tn :tabn<CR>
+nmap <leader>tp :tabp<CR>
+nmap <leader>sh <C-W>s<C-w>j<CR>
+nmap <leader>sv <C-W>v<C-w>l<CR>
 nmap <leader>d <Plug>(pydocstring)
-nmap <leader>f :Files<CR>
-nmap <leader>g :Goyo<CR>
-nmap <leader>h :RainbowParentheses!!<CR>
-nmap <leader>j :set filetype=journal<CR>
-nmap <leader>k :ColorToggle<CR>
-nmap <leader>l :Limelight!!<CR>
+nmap <leader>ff :Files<CR>
+nmap <leader>fw :Windows<CR>
+nmap <leader>fb :Buffers<CR>
+nmap <leader>fl :Lines<CR>
+nmap <leader>rg :Rg<CR>
+
+"nmap <leader>g :Goyo<CR>
+"nmap <leader>w :TagbarToggle<CR>
+"nmap <leader>h :RainbowParentheses!!<CR>
+"nmap <leader>j :set filetype=journal<CR>
+"nmap <leader>k :ColorToggle<CR>
+"nmap <leader>l :Limelight!!<CR>
+
 xmap <leader>l :Limelight!!<CR>
 autocmd FileType python nmap <leader>x :0,$!~/.config/nvim/env/bin/python -m yapf<CR>
 "nmap <leader>n :HackerNews best<CR>J
